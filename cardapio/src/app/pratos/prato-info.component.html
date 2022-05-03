@@ -1,0 +1,43 @@
+<h2>Detalhes do Prato</h2>
+
+<hr>
+
+<form #pratoForm="ngForm" *ngIf="prato">
+  <div class="form-group row">
+
+    <label class="col-sm-2 col-form-label">Nome:</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="prato.nome" #pratoName="ngModel" required="" name="nome"
+        [ngClass]="{'is-invalid':pratoName.invalid}" class="form-control">
+
+      <div class="invalid-feedback">
+        <span>Nome do prato é obrigatório</span>
+      </div>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Preço:</label>
+    <div class="col-sm-10">
+      <input [(ngModel)]="prato.preco" #pratoPrice="ngModel" type="number" required="" name="preco"
+        [ngClass]="{'is-invalid':pratoPrice.invalid}" class="form-control">
+
+      <div class="invalid-feedback">
+        <span>Preço do prato é obrigatório</span>
+      </div>
+    </div>
+
+    <label class="col-sm-2 col-form-label">Descrição:</label>
+    <div class="col-sm-10">
+      <textarea [(ngModel)]="prato.descricao" #pratoDescricao="ngModel" required="" name="descricao"
+        [ngClass]="{'is-invalid':pratoDescricao.invalid}" class="form-control"></textarea>
+
+      <div class="invalid-feedback">
+        <span>Descrição do prato é obrigatório</span>
+      </div>
+    </div>
+
+  </div>
+
+  <button [disabled]="pratoForm.invalid" (click)="save()" class="btn btn-primary mr-2">Salvar</button>
+  <button [routerLink]="['/pratos']" class="btn btn-secondary mr-2">Voltar</button>
+
+</form>
